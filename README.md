@@ -24,7 +24,14 @@
 
 ## 从这里开始
 
-完整教程完成后会位于 `docs/GIT-ENTERPRISE-TUTORIAL.md`。如果你只是想快速运行项目：
+建议按以下顺序学习：
+
+1. 阅读 [企业真实开发 Git 实战教程](docs/GIT-ENTERPRISE-TUTORIAL.md)
+2. 完成教程第 7 章的独立功能 PR
+3. 使用 `lab/conflict-alice` 和 `lab/conflict-bob` 分支完成冲突实验
+4. 日常开发时查阅 [Git 企业开发速查表](docs/CHEATSHEET.md)
+
+如果你只是想快速运行项目：
 
 ```bash
 python -m pip install -e .
