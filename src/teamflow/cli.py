@@ -18,7 +18,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     parser = argparse.ArgumentParser(
         prog="teamflow",
-        description="Manage a small team's work tickets.",
+        description="Track TeamFlow incidents and feature requests from the terminal.",
     )
     parser.add_argument(
         "--db",
