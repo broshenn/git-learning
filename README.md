@@ -31,7 +31,22 @@ python -m pip install -e .
 teamflow --help
 ```
 
+创建并流转一个真实工单：
+
+```bash
+teamflow add "修复登录超时问题" --priority high
+teamflow assign 1 "chen"
+teamflow list --status open
+teamflow close 1
+```
+
+也可以不安装，直接从源码运行：
+
+```bash
+$env:PYTHONPATH = "src"  # PowerShell
+python -m teamflow --help
+```
+
 ## 项目许可证
 
 [MIT](LICENSE)
-
