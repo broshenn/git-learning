@@ -65,6 +65,34 @@ class TicketServiceTest(unittest.TestCase):
         self.assertEqual(1, len(open_tickets))
         self.assertEqual("补充监控告警", open_tickets[0].title)
 
+
+    def test_list_filters_by_owner(self) -> None:
+        """Owner filtering returns only tickets assigned to that owner."""
+
+        alice_ticket = self.service.create("修复登录超时", Priority.HIGH)
+        bob_ticket = self.service.create("增加导出功能", Priority.MEDIUM)
+        self.service.assign(alice_ticket.id, "alice")
+        self.service.assign(bob_ticket.id, "bob")
+
+        owner_tickets = self.service.list(owner="  alice  ")
+
+        self.assertEqual(1, len(owner_tickets))
+        self.assertEqual("修复登录超时", owner_tickets[0].title)
+
+    def test_list_combines_status_and_owner_filters(self) -> None:
+        """Status and owner filters are both applied when provided."""
+
+        closed_ticket = self.service.create("修复支付回调", Priority.HIGH)
+        open_ticket = self.service.create("补充接口监控", Priority.MEDIUM)
+        self.service.assign(closed_ticket.id, "alice")
+        self.service.assign(open_ticket.id, "alice")
+        self.service.close(closed_ticket.id)
+
+        matching = self.service.list(status=Status.OPEN, owner="alice")
+
+        self.assertEqual(1, len(matching))
+        self.assertEqual("补充接口监控", matching[0].title)
+
     def test_unknown_ticket_raises_domain_error(self) -> None:
         """Missing identifiers produce a meaningful domain error."""
 
