@@ -24,12 +24,17 @@
 
 ## 从这里开始
 
-建议按以下顺序学习：
+如果你是第一次系统学习 Git，从零基础课程开始：
 
-1. 阅读 [企业真实开发 Git 实战教程](docs/GIT-ENTERPRISE-TUTORIAL.md)
-2. 完成教程第 7 章的独立功能 PR
-3. 使用 `lab/conflict-alice` 和 `lab/conflict-bob` 分支完成冲突实验
-4. 日常开发时查阅 [Git 企业开发速查表](docs/CHEATSHEET.md)
+1. [第 1 课：环境、项目与 Git 原理](docs/beginner/01-FOUNDATIONS.md)
+2. [第 2 课：第一次提交与分支开发](docs/beginner/02-COMMIT-AND-BRANCH.md)
+3. [第 3 课：开发一个真实功能](docs/beginner/03-REAL-FEATURE.md)
+4. [第 4 课：Push、PR、Review、CI 与冲突](docs/beginner/04-TEAM-COLLABORATION.md)
+5. [第 5 课：撤销救援、进阶工具与发布](docs/beginner/05-RECOVERY-AND-RELEASE.md)
+
+完整入口见 [5 课零基础学习地图](docs/beginner/README.md)。命令记不住时查阅 [命令中文词典](docs/beginner/COMMAND-DICTIONARY.md)，遇到错误时打开 [报错急救手册](docs/beginner/TROUBLESHOOTING.md)。
+
+完成五课后，再阅读 [企业真实开发 Git 进阶总览](docs/GIT-ENTERPRISE-TUTORIAL.md)。
 
 如果你只是想快速运行项目：
 
