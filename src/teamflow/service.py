@@ -43,13 +43,22 @@ class TicketService:
         self.repository.save(tickets)
         return ticket
 
-    def list(self, status: Status | None = None) -> list[Ticket]:
-        """Return tickets, optionally filtered by status."""
+    def list(
+        self,
+        status: Status | None = None,
+        owner: str | None = None,
+    ) -> list[Ticket]:
+        """Return tickets, optionally filtered by status and owner."""
 
         tickets = self.repository.load()
-        if status is None:
-            return tickets
-        return [ticket for ticket in tickets if ticket.status == status]
+        if status is not None:
+            tickets = [ticket for ticket in tickets if ticket.status == status]
+        if owner is not None:
+            normalized_owner = owner.strip()
+            tickets = [
+                ticket for ticket in tickets if ticket.owner == normalized_owner
+            ]
+        return tickets
 
     def assign(self, ticket_id: int, owner: str) -> Ticket:
         """Assign a ticket to a team member."""

@@ -42,6 +42,10 @@ def build_parser() -> argparse.ArgumentParser:
         choices=[status.value for status in Status],
         help="filter tickets by status",
     )
+    list_parser.add_argument(
+        "--owner",
+        help="filter tickets by owner",
+    )
 
     assign_parser = subparsers.add_parser("assign", help="assign a ticket")
     assign_parser.add_argument("ticket_id", type=int)
@@ -74,7 +78,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             print(f"created {format_ticket(ticket)}")
         elif args.command == "list":
             status = Status(args.status) if args.status else None
-            tickets = service.list(status)
+            tickets = service.list(status=status, owner=args.owner)
             if not tickets:
                 print("no tickets")
             for ticket in tickets:

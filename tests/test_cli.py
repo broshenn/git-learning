@@ -42,6 +42,26 @@ class CliTest(unittest.TestCase):
         self.assertIn("修复结算错误", list_output.getvalue())
         self.assertIn("[high]", list_output.getvalue())
 
+    def test_list_filters_by_owner(self) -> None:
+        """The owner option displays only matching tickets."""
+
+        with tempfile.TemporaryDirectory() as directory:
+            database = Path(directory) / "tickets.json"
+            main(["--db", str(database), "add", "修复登录超时"])
+            main(["--db", str(database), "add", "补充支付监控"])
+            main(["--db", str(database), "assign", "1", "alice"])
+            main(["--db", str(database), "assign", "2", "bob"])
+
+            output = io.StringIO()
+            with contextlib.redirect_stdout(output):
+                result = main(
+                    ["--db", str(database), "list", "--owner", "alice"]
+                )
+
+        self.assertEqual(0, result)
+        self.assertIn("修复登录超时", output.getvalue())
+        self.assertNotIn("补充支付监控", output.getvalue())
+
     def test_missing_ticket_returns_failure_code(self) -> None:
         """Domain failures are reported as non-zero process results."""
 
