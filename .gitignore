@@ -7,10 +7,11 @@ __pycache__/
 .venv/
 dist/
 build/
+!web/build/
+!web/build/sites-vite-plugin.ts
 data/*.json
 !data/.gitkeep
 .idea/
 .vscode/
 .DS_Store
 Thumbs.db
-

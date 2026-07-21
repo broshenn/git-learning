@@ -24,6 +24,14 @@
 
 ## 从这里开始
 
+推荐使用 [`web/`](web/README.md) 里的交互式网页版：支持课程导航、全文搜索、进度保存、代码复制、流程图、深色模式和手机端阅读。
+
+```powershell
+cd web
+npm install
+npm run dev
+```
+
 如果你是第一次系统学习 Git，从零基础课程开始：
 
 1. [第 1 课：环境、项目与 Git 原理](docs/beginner/01-FOUNDATIONS.md)
